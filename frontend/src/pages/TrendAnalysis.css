@@ -1,0 +1,95 @@
+/* Full page */
+.trend-page {
+  height: 100vh;
+  background: linear-gradient(135deg, #f8fbff, #eef2ff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Title */
+.trend-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #1e293b;
+}
+
+/* Grid row */
+.trend-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 40px;
+}
+
+/* Column wrapper */
+.trend-col {
+  flex: 1;
+  max-width: 300px;
+}
+
+/* PERFECT SQUARE */
+.trend-square {
+  width: 100%;
+  aspect-ratio: 1 / 1;     /* 🔥 MAKES IT SQUARE */
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+  color: #ffffff;
+}
+
+/* Hover effect */
+.trend-square:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+}
+
+/* Center content */
+.trend-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+}
+
+/* Text */
+.trend-content h3 {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.trend-content p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Gradients */
+.gradient-blue {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+}
+
+.gradient-green {
+  background: linear-gradient(135deg, #059669, #34d399);
+}
+
+.gradient-purple {
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+}
+
+/* Responsive fallback */
+@media (max-width: 992px) {
+  .trend-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trend-col {
+    max-width: 260px;
+  }
+}
