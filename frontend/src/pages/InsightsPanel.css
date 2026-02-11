@@ -1,0 +1,75 @@
+.insights-card {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.insights-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.insights-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #1e293b;
+  letter-spacing: 0.5px;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.insight-item {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.insight-item:hover {
+  transform: scale(1.03);
+}
+
+.insight-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.insight-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.insight-value.highlight {
+  color: #16a34a;
+}
+
+.insight-value.subtle {
+  color: #dc2626;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .insights-card {
+    padding: 20px;
+  }
+
+  .insight-value {
+    font-size: 18px;
+  }
+}

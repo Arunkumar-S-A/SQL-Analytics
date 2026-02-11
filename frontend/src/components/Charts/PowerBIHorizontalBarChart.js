@@ -16,36 +16,49 @@ ChartJS.register(
   Legend
 );
 
-const baseColors = [
-  "#7c3aed", // Purple
-  "#22c55e", // Green
-  "#f97316", // Orange
-  "#06b6d4", // Cyan
-  "#ef4444", // Red
-  "#eab308", // Yellow
-  "#14b8a6"  // Teal
+const colors = [
+  "#7c3aed",
+  "#22c55e",
+  "#f97316",
+  "#06b6d4",
+  "#ef4444",
+  "#eab308",
+  "#14b8a6",
+  "#3b82f6",
+  "#ec4899"
 ];
 
-const PowerBIBarChart = ({ labels, values, title }) => {
+const PowerBIHorizontalBarChart = ({ labels, values, title }) => {
+
+  // 🔥 Sort descending for ranking
+  const combined = labels.map((label, index) => ({
+    label,
+    value: values[index]
+  })).sort((a, b) => b.value - a.value);
+
+  const sortedLabels = combined.map((item, index) => 
+    `#${index + 1} ${item.label}`
+  );
+
+  const sortedValues = combined.map(item => item.value);
+
   const data = {
-    labels,
+    labels: sortedLabels,
     datasets: [
       {
         label: title,
-        data: values,
-        backgroundColor: values.map(
-          (_, index) => baseColors[index % baseColors.length]
-        ),
-        hoverBackgroundColor: values.map(
-          (_, index) => baseColors[index % baseColors.length] + "CC"
+        data: sortedValues,
+        backgroundColor: sortedValues.map(
+          (_, i) => colors[i % colors.length]
         ),
         borderRadius: 12,
-        barThickness: 35
+        barThickness: 28
       }
     ]
   };
 
   const options = {
+    indexAxis: "y", // 🔥 Makes it Horizontal
     responsive: true,
     maintainAspectRatio: false,
     animation: {
@@ -58,8 +71,8 @@ const PowerBIBarChart = ({ labels, values, title }) => {
         backgroundColor: "#0f172a",
         titleColor: "#fff",
         bodyColor: "#e5e7eb",
-        padding: 12,
         cornerRadius: 8,
+        padding: 10,
         callbacks: {
           label: function (context) {
             return `₹ ${context.raw.toLocaleString()}`;
@@ -69,21 +82,21 @@ const PowerBIBarChart = ({ labels, values, title }) => {
     },
     scales: {
       x: {
-        grid: { display: false },
-        ticks: {
-          color: "#475569",
-          autoSkip: false
-        }
-      },
-      y: {
         grid: {
-          color: "rgba(148, 163, 184, 0.2)"
+          color: "rgba(148,163,184,0.2)"
         },
         ticks: {
           color: "#475569",
           callback: function (value) {
             return "₹ " + value.toLocaleString();
           }
+        }
+      },
+      y: {
+        grid: { display: false },
+        ticks: {
+          color: "#334155",
+          font: { size: 13 }
         }
       }
     }
@@ -92,19 +105,18 @@ const PowerBIBarChart = ({ labels, values, title }) => {
   return (
     <div
       style={{
-        height: "260px",   // smaller height
+        height: "320px",
         width: "100%",
         background: "#ffffff",
         padding: "20px",
         borderRadius: "16px",
         boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-        overflowX: "auto"
+        overflowY: "auto"
       }}
     >
       <div
         style={{
-          minWidth: `${labels.length * 80}px`,
-          height: "100%"
+          minHeight: `${sortedLabels.length * 45}px`
         }}
       >
         <Bar data={data} options={options} />
@@ -113,4 +125,4 @@ const PowerBIBarChart = ({ labels, values, title }) => {
   );
 };
 
-export default PowerBIBarChart;
+export default PowerBIHorizontalBarChart;

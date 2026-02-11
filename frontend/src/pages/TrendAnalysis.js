@@ -67,7 +67,7 @@ const TrendAnalysis = () => {
 
   return (
     <Container fluid className="trend-page">
-      <h2 className="trend-title">📊 Trend Analytics</h2>
+      <h1 className="trend-title">Trend Analytics</h1>
 
       <Row className="trend-grid">
         {trends.map((trend, idx) => (
