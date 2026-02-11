@@ -11,14 +11,16 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/users" element={<UserAnalytics />} />
-        <Route path="/transactions" element={<TransactionAnalytics />} />
-        <Route path="/trends" element={<TrendAnalysis />} />
-        <Route path="/trends/:type" element={<TrendDetail />} />
-        <Route path="/categories" element={<CategoryAnalytics />} />
-      </Routes>
+      <div className="app-content">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/users" element={<UserAnalytics />} />
+          <Route path="/transactions" element={<TransactionAnalytics />} />
+          <Route path="/trends" element={<TrendAnalysis />} />
+          <Route path="/trends/:type" element={<TrendDetail />} />
+          <Route path="/categories" element={<CategoryAnalytics />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 };

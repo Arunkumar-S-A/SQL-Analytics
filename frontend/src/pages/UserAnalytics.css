@@ -1,0 +1,84 @@
+.user-container {
+  padding: 30px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.search-bar {
+  position: sticky; 
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.user-list {
+  flex : 1;
+  display: grid;
+  gap: 15px;
+  overflow-y: auto;     /* scroll inside */
+}
+
+.user-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 18px 22px;
+  border-radius: 10px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.user-card:hover {
+  background: #e5e7eb;   /* darker gray */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #e5e7eb;   /* same gray family */
+  color: #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  width: 80%;
+  max-height: 80%;
+  overflow: auto;
+  border-radius: 12px;
+}
+
+.actions button:hover {
+  background: #424345;
+  color: white;
+}
