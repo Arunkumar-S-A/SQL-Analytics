@@ -1,4 +1,6 @@
-.navbar {
+.top-bar {
+  height: 70px;
+  background: linear-gradient(90deg, #1f4037, #99f2c8);
   display: flex;
   position: sticky;
   justify-content: space-between;
@@ -7,18 +9,8 @@
   color: white;
 }
 
-.logo {
-  margin: 0;
-}
-
-.links a {
-  color: #bbb;
-  margin-left: 20px;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.links a.active {
-  color: #00eaff;
-  border-bottom: 2px solid #00eaff;
+.top-bar h2 {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
