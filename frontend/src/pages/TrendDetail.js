@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { Container, Card } from "react-bootstrap";
 
 import DataTable from "../components/DataTable";
-import PowerBIBarChart from "../components/Charts/PowerBIBarChart";
-import PowerBILineChart from "../components/Charts/PowerBILineChart";
+import PowerBIBarChart from "../components/charts/PowerBIBarChart";
+import PowerBILineChart from "../components/charts/PowerBILineChart";
 
 import { getWeekly, getMonthly, getRankings } from "../api/analytics.api";
 
