@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { Container, Card } from "react-bootstrap";
 
 import DataTable from "../components/DataTable";
-import PowerBIBarChart from "../components/charts/PowerBIBarChart";
-import PowerBILineChart from "../components/charts/PowerBILineChart";
-
+import PowerBIBarChart from "../components/Charts/PowerBIBarChart";
+import PowerBILineChart from "../components/Charts/PowerBILineChart";
+import PowerBIHorizontalBarChart from "../components/Charts/PowerBIHorizontalBarChart";
+import InsightsPanel from "./InsightsPanel";
 import { getWeekly, getMonthly, getRankings } from "../api/analytics.api";
 
 const TrendDetail = () => {
@@ -26,9 +27,23 @@ const TrendDetail = () => {
       return (
         <PowerBILineChart
           title="Weekly Spending Trend"
-          labels={data.map(d => d.week_start)}
+          labels={data.map(d => {
+            const start = new Date(d.week_start);
+            const end = new Date(start);
+            end.setDate(start.getDate() + 6);
+
+            return `${start.toLocaleDateString("en-IN", {
+              month: "short",
+              day: "numeric"
+            })} - ${end.toLocaleDateString("en-IN", {
+              month: "short",
+              day: "numeric"
+            })}`;
+          })}
           values={data.map(d => d.total_spent)}
         />
+
+
       );
     }
 
@@ -37,22 +52,29 @@ const TrendDetail = () => {
       return (
         <PowerBIBarChart
           title="Monthly Spending Trend"
-          labels={data.map(d => d.month_start)}
+          labels={data.map(d =>
+            new Date(d.month_start).toLocaleDateString("en-US", {
+              month: "short",
+              year: "numeric"
+            })
+          )}
           values={data.map(d => d.total_spent)}
         />
+
       );
     }
 
     // RANKING → Bar Chart
     if (type === "ranking") {
       return (
-        <PowerBIBarChart
+        <PowerBIHorizontalBarChart
           title="User Spending Ranking"
           labels={data.map(d => `User ${d.user_id}`)}
           values={data.map(d => d.total_spent)}
         />
       );
     }
+
   };
 
   return (
@@ -67,14 +89,11 @@ const TrendDetail = () => {
         {renderChart()}
       </Card>
 
-      {/* Table Section */}
+      {/* Insights Section */}
       <Card className="shadow-sm border-0 p-3">
-        <h6 className="mb-3 text-muted">Raw Data</h6>
-        <DataTable
-          columns={Object.keys(data[0] || {})}
-          data={data}
-        />
+        <InsightsPanel type={type} data={data} />
       </Card>
+
     </Container>
   );
 };

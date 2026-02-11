@@ -1,7 +1,7 @@
 /* Full page */
 .trend-page {
   height: 100vh;
-  background: linear-gradient(135deg, #f8fbff, #eef2ff);
+  background: linear-gradient(135deg, #76beab, #cdebee);
   display: flex;
   flex-direction: column;
   justify-content: center;
