@@ -1,0 +1,122 @@
+/* FULL BACKGROUND */
+.dashboard-wrapper {
+  background-color: #23433c; /* Mild Olive Green */
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  
+}
+
+/* HERO SECTION */
+.hero-section {
+  text-align: center;
+  color: white;
+  padding: 100px 20px 100px;
+  
+}
+
+.system-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.system-description {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* SUMMARY SECTION */
+
+.summary-section {
+  margin-top: 40px;
+  padding: 60px 40px;
+  background-color: #a6cac0; /* Apply background here */
+;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px; /* This creates spacing */
+}
+
+.summary-card {
+  background-color: #23433c; /* Apply background here */
+  padding: 30px;
+  border-radius: 10px;
+  color: rgb(248, 245, 245);
+}
+
+/* FEATURES SECTION */
+.features-section {
+  padding: 80px 40px;
+  background: #ffffff;
+}
+
+/* ANALYTICS GRID */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* GRID BOXES */
+.grid-box {
+  border-radius: 25px;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 600;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.grid-box span {
+  font-size: 1.2rem;
+  margin-top: 12px;
+}
+
+/* Hover Animation */
+.grid-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Individual Colors */
+.users-box {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.transactions-box {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+}
+
+.categories-box {
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  color: #2c3e50;
+}
+
+.trends-box {
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+}
+
+/* FOOTER */
+.footer {
+  background: #2f4f4f;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.9rem;
+}
+
+.section-separator {
+  height: 40px;
+  background: #ffffff;
+}
