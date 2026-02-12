@@ -9,7 +9,6 @@ INSERT INTO users (full_name, email, city) VALUES
 ('Suresh Babu','suresh.babu@gmail.com','Chennai'),
 ('Neha Kapoor','neha.kapoor@gmail.com','Delhi'),
 ('Manoj Kulkarni','manoj.kulkarni@gmail.com','Pune'),
-
 ('Lakshmi Narayan','lakshmi.narayan@gmail.com','Bangalore'),
 ('Ajay Desai','ajay.desai@gmail.com','Mumbai'),
 ('Pooja Nair','pooja.nair@gmail.com','Kochi'),
@@ -20,7 +19,6 @@ INSERT INTO users (full_name, email, city) VALUES
 ('Pradeep Singh','pradeep.singh@gmail.com','Delhi'),
 ('Megha Sharma','megha.s@gmail.com','Bangalore'),
 ('Anil Kumar','anil.kumar@gmail.com','Hyderabad'),
-
 ('Snehal Patil','snehal.patil@gmail.com','Pune'),
 ('Farhan Ali','farhan.ali@gmail.com','Mumbai'),
 ('Gayathri Iyer','gayathri.iyer@gmail.com','Chennai'),
@@ -31,7 +29,6 @@ INSERT INTO users (full_name, email, city) VALUES
 ('Arjun Nair','arjun.nair@gmail.com','Kochi'),
 ('Simran Kaur','simran.kaur@gmail.com','Delhi'),
 ('Tarun Mehta','tarun.mehta@gmail.com','Ahmedabad'),
-
 ('Bhavana Rao','bhavana.rao@gmail.com','Hyderabad'),
 ('Yash Thakur','yash.thakur@gmail.com','Mumbai'),
 ('Shruti Joshi','shruti.joshi@gmail.com','Pune'),
@@ -42,7 +39,6 @@ INSERT INTO users (full_name, email, city) VALUES
 ('Vivek Mishra','vivek.mishra@gmail.com','Lucknow'),
 ('Nikita Arora','nikita.arora@gmail.com','Chandigarh'),
 ('Gaurav Singh','gaurav.singh@gmail.com','Noida'),
-
 ('Karthik Raj','karthik.raj@gmail.com','Chennai'),
 ('Preeti Sinha','preeti.sinha@gmail.com','Patna'),
 ('Mohit Agarwal','mohit.agarwal@gmail.com','Indore'),

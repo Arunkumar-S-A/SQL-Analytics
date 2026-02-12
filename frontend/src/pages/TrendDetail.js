@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Container, Card } from "react-bootstrap";
 
-import DataTable from "../components/DataTable";
-import PowerBIBarChart from "../components/Charts/PowerBIBarChart";
-import PowerBILineChart from "../components/Charts/PowerBILineChart";
-import PowerBIHorizontalBarChart from "../components/Charts/PowerBIHorizontalBarChart";
+//import DataTable from "../components/DataTable";
+import PowerBIBarChart from "../components/charts/PowerBIBarChart";
+import PowerBILineChart from "../components/charts/PowerBILineChart";
+import PowerBIHorizontalBarChart from "../components/charts/PowerBIHorizontalBarChart";
 import InsightsPanel from "./InsightsPanel";
 import { getWeekly, getMonthly, getRankings } from "../api/analytics.api";
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getRiskData } from "../api/risk.api";
 import DataTable from "../components/DataTable";
-import RadialRiskChart from "../components/Charts/RadialRiskChart";
+import RadialRiskChart from "../components/charts/RadialRiskChart";
 
 const TransactionAnalytics = () => {
   const [risk, setRisk] = useState([]);

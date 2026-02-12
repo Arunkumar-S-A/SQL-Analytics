@@ -37,7 +37,7 @@ const RadialRiskChart = ({ data }) => {
           <RadialBar
             dataKey="value"
             cornerRadius={10}
-            label={{ position: "insideStart", fill: "#fff" }}
+            label={{ position: "insideStart", fill: "#413e3e" }}
           />
           <Legend />
         </RadialBarChart>
