@@ -19,29 +19,63 @@ ChartJS.register(
   Decimation
 );
 
-const WINDOW_SIZE = 30; // bars per view
+// ✅ Soft Shadow Plugin
+ChartJS.register({
+  id: "shadowPlugin",
+  beforeDatasetDraw(chart) {
+    const ctx = chart.ctx;
+    ctx.save();
+    ctx.shadowColor = "rgba(0, 0, 0, 0.2)";
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetY = 5;
+  },
+  afterDatasetDraw(chart) {
+    chart.ctx.restore();
+  }
+});
+
+const WINDOW_SIZE = 30;
+
+// ✅ Vibrant Modern Palette
+const generateColors = (count) => {
+  const palette = [
+    "#ff4d6d", // neon red
+    "#ff9f1c", // vibrant orange
+    "#2ec4b6", // aqua
+    "#4361ee", // electric blue
+    "#f72585", // hot pink
+    "#7209b7", // vivid purple
+    "#4cc9f0", // bright cyan
+    "#06d6a0", // neon green
+    "#ff006e"  // magenta
+  ];
+
+  return Array.from({ length: count }, (_, i) =>
+    palette[i % palette.length]
+  );
+};
 
 const TrendBarChart = ({ labels = [], values = [], title }) => {
-
   const total = labels.length;
   const safeWindow = Math.min(WINDOW_SIZE, total);
 
   const [startIndex, setStartIndex] = useState(0);
 
-  // Reset index if dataset changes
   useEffect(() => {
     setStartIndex(0);
   }, [labels]);
 
   const endIndex = Math.min(startIndex + safeWindow, total);
 
-  const visibleLabels = useMemo(() => {
-    return labels.slice(startIndex, endIndex);
-  }, [labels, startIndex, endIndex]);
+  const visibleLabels = useMemo(
+    () => labels.slice(startIndex, endIndex),
+    [labels, startIndex, endIndex]
+  );
 
-  const visibleValues = useMemo(() => {
-    return values.slice(startIndex, endIndex);
-  }, [values, startIndex, endIndex]);
+  const visibleValues = useMemo(
+    () => values.slice(startIndex, endIndex),
+    [values, startIndex, endIndex]
+  );
 
   const data = useMemo(() => ({
     labels: visibleLabels,
@@ -49,9 +83,15 @@ const TrendBarChart = ({ labels = [], values = [], title }) => {
       {
         label: title,
         data: visibleValues,
-        backgroundColor: "#7c3aed",
-        borderRadius: 6,
-        barThickness: 24
+        backgroundColor: generateColors(visibleValues.length),
+
+        // ✅ Thicker Bars
+        barThickness: 32,
+        borderRadius: 10,
+
+        // ✅ Hover Glow Effect
+        hoverBorderColor: "#111",
+        hoverBorderWidth: 2
       }
     ]
   }), [visibleLabels, visibleValues, title]);
@@ -61,7 +101,7 @@ const TrendBarChart = ({ labels = [], values = [], title }) => {
     maintainAspectRatio: false,
     animation: false,
     layout: {
-      padding: 10
+      padding: 12
     },
     interaction: {
       mode: "index",
@@ -74,6 +114,11 @@ const TrendBarChart = ({ labels = [], values = [], title }) => {
         algorithm: "min-max"
       },
       tooltip: {
+        backgroundColor: "#111827",
+        titleColor: "#fff",
+        bodyColor: "#fff",
+        padding: 12,
+        displayColors: false,
         callbacks: {
           label: (context) =>
             `₹ ${context.raw.toLocaleString()}`
@@ -82,12 +127,22 @@ const TrendBarChart = ({ labels = [], values = [], title }) => {
     },
     scales: {
       x: {
+        grid: {
+          display: false
+        },
         ticks: {
-          autoSkip: true
+          color: "#333",
+          font: {
+            weight: "500"
+          }
         }
       },
       y: {
+        grid: {
+          color: "rgba(0,0,0,0.08)"
+        },
         ticks: {
+          color: "#333",
           callback: (value) =>
             "₹ " + value.toLocaleString()
         }
@@ -114,18 +169,15 @@ const TrendBarChart = ({ labels = [], values = [], title }) => {
 
   return (
     <div style={{ width: "100%" }}>
-
-      {/* Fixed Height Chart Container */}
       <div
         style={{
-          height: "320px",
+          height: "340px",
           position: "relative"
         }}
       >
         <Bar data={data} options={options} />
       </div>
 
-      {/* Controls Section */}
       {total > safeWindow && (
         <div
           style={{
@@ -139,7 +191,8 @@ const TrendBarChart = ({ labels = [], values = [], title }) => {
             onClick={handlePrevious}
             disabled={!canGoLeft}
             style={{
-              padding: "6px 12px",
+              padding: "6px 14px",
+              fontWeight: "500",
               cursor: canGoLeft ? "pointer" : "not-allowed"
             }}
           >
@@ -154,7 +207,8 @@ const TrendBarChart = ({ labels = [], values = [], title }) => {
             onClick={handleNext}
             disabled={!canGoRight}
             style={{
-              padding: "6px 12px",
+              padding: "6px 14px",
+              fontWeight: "500",
               cursor: canGoRight ? "pointer" : "not-allowed"
             }}
           >
@@ -162,7 +216,6 @@ const TrendBarChart = ({ labels = [], values = [], title }) => {
           </button>
         </div>
       )}
-
     </div>
   );
 };

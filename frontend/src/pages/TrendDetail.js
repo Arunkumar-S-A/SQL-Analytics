@@ -8,7 +8,8 @@ import { getWeeklyTotal, getMonthlyTotal, getRankings } from "../api/analytics.a
 import TrendBarChart from "../components/charts/TrendBarChart";
 import TrendLineChart from "../components/charts/TrendLineChart";
 import TrendHorizontalChart from "../components/charts/TrendHorizontalChart";
-
+import PowerBILineChart from  "../components/charts/PowerBILineChart";
+import PowerBIBarChart from    "../components/charts/PowerBIBarChart";
 const TrendDetail = () => {
   const { type } = useParams();
   const [data, setData] = useState([]);
@@ -36,7 +37,7 @@ const TrendDetail = () => {
     // WEEKLY → Line Chart
     if (type === "weekly") {
       return (
-        <TrendLineChart
+        <PowerBILineChart
           title="Weekly Spending Trend"
           labels={data.map(d => {
             const start = new Date(d.week_start);

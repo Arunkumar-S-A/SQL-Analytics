@@ -33,3 +33,4 @@ SOURCE database/views/rank_jump_anomaly.sql;
 SOURCE database/views/unified_risk_indicators.sql;
 SOURCE database/views/monthly_total_spend.sql;
 SOURCE database/views/weekly_total_spend.sql;
+SOURCE database/views/category_spending_rank.sql;

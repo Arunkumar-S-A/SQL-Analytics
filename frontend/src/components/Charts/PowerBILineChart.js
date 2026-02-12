@@ -8,7 +8,7 @@ import {
   Legend
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-
+ 
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -17,15 +17,15 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
+ 
 const baseColors = [
-  "#7c3aed",
-  "#22c55e",
-  "#f97316",
-  "#06b6d4",
-  "#ef4444"
+  "#7c3aed", // Purple
+  "#22c55e", // Green
+  "#f97316", // Orange
+  "#06b6d4", // Cyan
+  "#ef4444"  // Red
 ];
-
+ 
 const PowerBILineChart = ({ labels, values, title }) => {
   const data = {
     labels,
@@ -42,7 +42,7 @@ const PowerBILineChart = ({ labels, values, title }) => {
             const chart = context.chart;
             const { ctx, chartArea } = chart;
             if (!chartArea) return null;
-
+ 
             const gradient = ctx.createLinearGradient(
               0,
               chartArea.top,
@@ -52,11 +52,11 @@ const PowerBILineChart = ({ labels, values, title }) => {
             gradient.addColorStop(
               0,
               baseColors[index % baseColors.length] + "66"
-            );
+            ); // stronger top
             gradient.addColorStop(
               1,
               baseColors[index % baseColors.length] + "00"
-            );
+            ); // transparent bottom
             return gradient;
           }
         }))
@@ -73,7 +73,7 @@ const PowerBILineChart = ({ labels, values, title }) => {
               const chart = context.chart;
               const { ctx, chartArea } = chart;
               if (!chartArea) return null;
-
+ 
               const gradient = ctx.createLinearGradient(
                 0,
                 chartArea.top,
@@ -87,7 +87,7 @@ const PowerBILineChart = ({ labels, values, title }) => {
           }
         ]
   };
-
+ 
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -112,10 +112,7 @@ const PowerBILineChart = ({ labels, values, title }) => {
     scales: {
       x: {
         grid: { display: false },
-        ticks: {
-          color: "#475569",
-          autoSkip: false  // important for scroll
-        }
+        ticks: { color: "#475569" }
       },
       y: {
         grid: {
@@ -130,29 +127,21 @@ const PowerBILineChart = ({ labels, values, title }) => {
       }
     }
   };
-
+ 
   return (
-    <div
+<div
       style={{
-        height: "260px",   // smaller height
+        height: "320px",
         width: "100%",
         background: "#ffffff",
         padding: "20px",
         borderRadius: "16px",
-        boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-        overflowX: "auto"   // enable horizontal scroll
+        boxShadow: "0 10px 25px rgba(0,0,0,0.08)"
       }}
-    >
-      <div
-        style={{
-          minWidth: `${labels.length * 90}px`, // width expands based on data
-          height: "100%"
-        }}
-      >
-        <Line data={data} options={options} />
-      </div>
-    </div>
+>
+<Line data={data} options={options} />
+</div>
   );
 };
-
+ 
 export default PowerBILineChart;

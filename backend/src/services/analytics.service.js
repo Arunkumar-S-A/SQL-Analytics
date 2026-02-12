@@ -42,3 +42,12 @@ export const getWeeklyTotalSpend = async () => {
 
   return rows;
 };
+
+export const getCategorySpendingRank = async () => {
+  const [rows] = await pool.query(`
+    SELECT * FROM category_spending_rank
+    ORDER BY total_spent DESC
+  `);
+
+  return rows;
+};

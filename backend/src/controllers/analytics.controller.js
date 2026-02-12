@@ -1,7 +1,8 @@
 import {
   fetchWeeklySpend,
   fetchMonthlySpend,
-  fetchUserRankings
+  fetchUserRankings,
+  getCategorySpendingRank
 } from "../services/analytics.service.js";
 
 export const getWeeklySpend = async (req, res) => {
@@ -43,3 +44,14 @@ export const fetchWeeklyTotalSpend = async (req, res) => {
     res.status(500).json({ message: "Error fetching weekly spend" });
   }
 };
+
+export const fetchCategorySpendingRank = async (req, res) => {
+  try {
+    const data = await getCategorySpendingRank();
+    res.json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching category analytics" });
+  }
+};
+
