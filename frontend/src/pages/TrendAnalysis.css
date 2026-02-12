@@ -1,7 +1,7 @@
 /* Full page */
 .trend-page {
   height: 100vh;
-  background: linear-gradient(135deg, #76beab, #cdebee);
+  background: linear-gradient(160deg, #eeefef, #c7c7ce);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,6 +9,7 @@
 
 /* Title */
 .trend-title {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-align: center;
   font-weight: 700;
   margin-bottom: 40px;
@@ -38,7 +39,7 @@
   cursor: pointer;
   transition: all 0.35s ease;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-  color: #ffffff;
+  color: #000000;
 }
 
 /* Hover effect */
@@ -49,6 +50,7 @@
 
 /* Center content */
 .trend-content {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -71,15 +73,14 @@
 
 /* Gradients */
 .gradient-blue {
-  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  background: linear-gradient(135deg, #ffffff, #96aed2);
 }
 
 .gradient-green {
-  background: linear-gradient(135deg, #059669, #34d399);
+  background: linear-gradient(135deg, #ffffff, #96aed2);
 }
-
 .gradient-purple {
-  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  background: linear-gradient(135deg, #ffffff, #96aed2);
 }
 
 /* Responsive fallback */
