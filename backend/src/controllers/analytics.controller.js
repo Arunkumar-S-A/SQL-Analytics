@@ -4,7 +4,9 @@ import {
   fetchWeeklySpend,
   fetchMonthlySpend,
   fetchUserRankings,
-  getCategorySpendingRank
+  getCategorySpendingRank,
+  getMonthlyTotalSpend,
+  getWeeklyTotalSpend
 } from "../services/analytics.service.js";
 
 export const getWeeklySpend = async (req, res) => {
@@ -21,12 +23,6 @@ export const getUserRankings = async (req, res) => {
   const data = await fetchUserRankings();
   res.json(data);
 };
-
-<<<<<<< HEAD
-import {
-  getMonthlyTotalSpend,
-  getWeeklyTotalSpend
-} from "../services/analytics.service.js";
 
 export const fetchMonthlyTotalSpend = async (req, res) => {
   try {
@@ -45,8 +41,8 @@ export const fetchWeeklyTotalSpend = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error fetching weekly spend" });
-=======
-
+  }
+}
 
 export const getSummary = async (req, res) => {
   try {
@@ -71,7 +67,6 @@ export const getSummary = async (req, res) => {
   } catch (error) {
     console.error("Summary Error:", error);
     res.status(500).json({ message: "Server Error" });
->>>>>>> 4cb5c5e (Dashboard UI changed-summary API added-padding-Navbar)
   }
 };
 

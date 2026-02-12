@@ -17,6 +17,7 @@ router.get("/rankings", getUserRankings);
 router.get("/monthly-total", fetchMonthlyTotalSpend);
 router.get("/weekly-total", fetchWeeklyTotalSpend);
 router.get("/summary", getSummary);
+router.get("/category-spend", fetchCategorySpendingRank);
 
 export default router;
 
