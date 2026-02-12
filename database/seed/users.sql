@@ -1,6 +1,6 @@
 INSERT INTO users (full_name, email, city) VALUES
 ('Arun Kumar','arun.kumar@gmail.com','Chennai'),
-('Priya Sharma','priya.sharma@gmail.com','Bangalore'),
+('Evelyn David','evelyn.david@gmail.com','Chennai'),
 ('Rahul Verma','rahul.verma@gmail.com','Delhi'),
 ('Sneha Iyer','sneha.iyer@gmail.com','Chennai'),
 ('Amit Patel','amit.patel@gmail.com','Mumbai'),

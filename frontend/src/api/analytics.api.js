@@ -14,3 +14,9 @@ export const getRankings = () =>
 
 export const getCategorySpend = () =>
   fetch(`${BASE}/category-spend`).then(res => res.json());
+
+export const getWeeklyTotal = () =>
+  fetch(`${BASE}/weekly-total`).then(res => res.json());
+
+export const getMonthlyTotal = () =>
+  fetch(`${BASE}/monthly-total`).then(res => res.json());

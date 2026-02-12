@@ -18,3 +18,28 @@ export const getUserRankings = async (req, res) => {
   const data = await fetchUserRankings();
   res.json(data);
 };
+
+import {
+  getMonthlyTotalSpend,
+  getWeeklyTotalSpend
+} from "../services/analytics.service.js";
+
+export const fetchMonthlyTotalSpend = async (req, res) => {
+  try {
+    const data = await getMonthlyTotalSpend();
+    res.json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching monthly spend" });
+  }
+};
+
+export const fetchWeeklyTotalSpend = async (req, res) => {
+  try {
+    const data = await getWeeklyTotalSpend();
+    res.json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching weekly spend" });
+  }
+};

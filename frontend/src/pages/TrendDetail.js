@@ -1,22 +1,33 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Container, Card } from "react-bootstrap";
-
+import { Spinner } from "react-bootstrap";
 //import DataTable from "../components/DataTable";
-import PowerBIBarChart from "../components/charts/PowerBIBarChart";
-import PowerBILineChart from "../components/charts/PowerBILineChart";
-import PowerBIHorizontalBarChart from "../components/charts/PowerBIHorizontalBarChart";
 import InsightsPanel from "./InsightsPanel";
-import { getWeekly, getMonthly, getRankings } from "../api/analytics.api";
+import { getWeeklyTotal, getMonthlyTotal, getRankings } from "../api/analytics.api";
+import TrendBarChart from "../components/charts/TrendBarChart";
+import TrendLineChart from "../components/charts/TrendLineChart";
+import TrendHorizontalChart from "../components/charts/TrendHorizontalChart";
 
 const TrendDetail = () => {
   const { type } = useParams();
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (type === "weekly") getWeekly().then(setData);
-    if (type === "monthly") getMonthly().then(setData);
-    if (type === "ranking") getRankings().then(setData);
+    setLoading(true);
+
+    const fetchData = async () => {
+      let result = [];
+      if (type === "weekly") result = await getWeeklyTotal();
+      if (type === "monthly") result = await getMonthlyTotal();
+      if (type === "ranking") result = await getRankings();
+
+      setData(result);
+      setLoading(false);
+    };
+
+    fetchData();
   }, [type]);
 
   const renderChart = () => {
@@ -25,7 +36,7 @@ const TrendDetail = () => {
     // WEEKLY → Line Chart
     if (type === "weekly") {
       return (
-        <PowerBILineChart
+        <TrendLineChart
           title="Weekly Spending Trend"
           labels={data.map(d => {
             const start = new Date(d.week_start);
@@ -50,7 +61,7 @@ const TrendDetail = () => {
     // MONTHLY → Bar Chart
     if (type === "monthly") {
       return (
-        <PowerBIBarChart
+        <TrendBarChart
           title="Monthly Spending Trend"
           labels={data.map(d =>
             new Date(d.month_start).toLocaleDateString("en-US", {
@@ -67,7 +78,7 @@ const TrendDetail = () => {
     // RANKING → Bar Chart
     if (type === "ranking") {
       return (
-        <PowerBIHorizontalBarChart
+        <TrendHorizontalChart
           title="User Spending Ranking"
           labels={data.map(d => `User ${d.user_id}`)}
           values={data.map(d => d.total_spent)}
@@ -86,7 +97,13 @@ const TrendDetail = () => {
 
       {/* Chart Section */}
       <Card className="shadow-lg border-0 p-4 mb-4">
-        {renderChart()}
+        {loading ? (
+          <div className="text-center py-5">
+            <Spinner animation="border" variant="primary" />
+          </div>
+        ) : (
+          renderChart()
+        )}
       </Card>
 
       {/* Insights Section */}
