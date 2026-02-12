@@ -1,16 +1,88 @@
+/* NAVBAR CONTAINER */
 .top-bar {
-  height: 70px;
-  background: linear-gradient(90deg, #1f4037, #99f2c8);
-  display: flex;
+  background: linear-gradient(90deg, #354c6d, #0d2449); /* subtle pastel gradient */
+  color: #333;
   position: sticky;
-  justify-content: space-between;
+  top: 0;
+  z-index: 1000;
+  
   padding: 15px 30px;
-  background: #111;
-  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.top-bar h2 {
-  color: #ffffff;
+/* TOP ROW: TITLE + ACTIONS */
+.navbar-top {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* TITLE */
+.navbar-top h2 {
   font-weight: 700;
   letter-spacing: 1px;
+  font-size: 1.8rem;
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* ACTIONS: Home + Features */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* HOME BUTTON */
+.home-btn {
+  background: linear-gradient(135deg, #ffffff, #b5c0d1); /* white-based subtle */
+  color: #333;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* FEATURE BUTTONS */
+.feature-btn {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 20px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0); /* default subtle */
+  transition: all 0.3s ease;
+}
+
+.feature-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* INDIVIDUAL FEATURE COLORS (subtle pastels) */
+.users-btn {
+  background: linear-gradient(135deg, #ffffff, #d9e4fa); /* soft blue */
+}
+
+.transactions-btn {
+  background: linear-gradient(135deg, #ffffff, #c2d6e1); /* soft green */
+}
+
+.categories-btn {
+  background: linear-gradient(135deg, #ffffff, #bbcbe6); /* soft orange */
+}
+
+.trends-btn {
+  background: linear-gradient(135deg, #ffffff, #cadaed); /* soft pink */
 }

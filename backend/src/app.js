@@ -18,4 +18,5 @@ app.use("/api/analytics", analyticsRoutes);
 app.use("/api/risk", riskRoutes);
 app.use("/api/user-analytics", userAnalyticsRoutes);
 
+
 export default app;

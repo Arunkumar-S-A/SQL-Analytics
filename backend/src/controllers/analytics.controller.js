@@ -1,3 +1,5 @@
+import db from "../config/db.js";
+
 import {
   fetchWeeklySpend,
   fetchMonthlySpend,
@@ -20,6 +22,7 @@ export const getUserRankings = async (req, res) => {
   res.json(data);
 };
 
+<<<<<<< HEAD
 import {
   getMonthlyTotalSpend,
   getWeeklyTotalSpend
@@ -42,6 +45,33 @@ export const fetchWeeklyTotalSpend = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error fetching weekly spend" });
+=======
+
+
+export const getSummary = async (req, res) => {
+  try {
+    const [users] = await db.query(
+      "SELECT COUNT(*) AS total_users FROM users"
+    );
+
+    const [transactions] = await db.query(
+      "SELECT COUNT(*) AS total_transactions FROM transactions"
+    );
+
+    const [revenue] = await db.query(
+      "SELECT IFNULL(SUM(amount),0) AS total_revenue FROM transactions"
+    );
+
+    res.json({
+      total_users: users[0].total_users,
+      total_transactions: transactions[0].total_transactions,
+      total_revenue: parseFloat(revenue[0].total_revenue)
+    });
+
+  } catch (error) {
+    console.error("Summary Error:", error);
+    res.status(500).json({ message: "Server Error" });
+>>>>>>> 4cb5c5e (Dashboard UI changed-summary API added-padding-Navbar)
   }
 };
 
