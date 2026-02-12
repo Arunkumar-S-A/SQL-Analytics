@@ -11,12 +11,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     getSummary().then(setSummary);
-    AOS.init({ duration: 1000 });
+    AOS.init({ duration: 100 });
   }, []);
 
+  
   return (
     <div className="dashboard-wrapper">
-      
 
       {/* HERO SECTION */}
       <section className="hero-section">
@@ -29,8 +29,6 @@ const Dashboard = () => {
         </p>
       </section>
       
-      <div className="section-separator"></div>
-
       {/* SUMMARY SECTION */}
       <section className="summary-section" data-aos="fade-up">
         <div className="summary-grid">
@@ -40,30 +38,8 @@ const Dashboard = () => {
         </div>
       </section>
 
-      {/* FEATURES SECTION (ANCHOR TYPE GRID) */}
-      <section className="features-section">
-        <div className="analytics-grid">
-          <a href="/users" className="grid-box users-box" data-aos="fade-right">
-            👤
-            <span>Users</span>
-          </a>
-
-          <a href="/transactions" className="grid-box transactions-box" data-aos="fade-up">
-            💰
-            <span>Transactions</span>
-          </a>
-
-          <a href="/categories" className="grid-box categories-box" data-aos="fade-left">
-            🗂️
-            <span>Categories</span>
-          </a>
-
-          <a href="/trends" className="grid-box trends-box" data-aos="zoom-in">
-            📈
-            <span>Trends</span>
-          </a>
-        </div>
-      </section>
+      {/* FEATURES SECTION (ANCHOR TYPE GRID) MOVED TO NAVBAR PAGE */}
+      
 
       {/* FOOTER */}
       <footer className="footer">

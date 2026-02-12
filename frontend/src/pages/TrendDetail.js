@@ -91,9 +91,16 @@ const TrendDetail = () => {
   return (
     <Container className="mt-4 mb-5">
       {/* Page Title */}
-      <h3 className="text-center mb-4 text-capitalize">
-        {type.replace("-", " ")} Analysis
+      <h3
+        className="mb-4 text-center"
+        style={{ paddingLeft: "40px" }}
+      >
+        {type
+          .replace("-", " ")
+          .replace(/\b\w/g, char => char.toUpperCase())}{" "}
+        Analysis
       </h3>
+
 
       {/* Chart Section */}
       <Card className="shadow-lg border-0 p-4 mb-4">
